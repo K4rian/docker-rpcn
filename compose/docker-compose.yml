@@ -1,0 +1,16 @@
+services:
+  rpcn:
+    image: k4rian/rpcn:latest
+    container_name: rpcn
+    volumes:
+      - data:/home/rpcn
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - rpcn.env
+    ports:
+      - 33131 # TCP
+      - 3657  # UDP
+    restart: unless-stopped
+
+volumes:
+  data:
