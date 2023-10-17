@@ -3,14 +3,14 @@
 </p>
 
 A Docker image for the [RPCN][1] P2P match-making server based on the official [Alpine Linux][2] [image][3].<br>
-The server allows to play [many PS3 games][4] with P2P match-making support via netplay using the [RPS3][5] emulator.
+The server allows you to play [many PS3 games][4] with P2P match-making support via netplay using the [RPS3][5] emulator.
 
 ---
 <div align="center">
 
-Docker Tag  | Version | Description    | Release Date |
----         | ---     | ---            | ---          |
-[latest][6] | 1.0     | Latest release | 2023-10-17   |
+Docker Tag  | Version | Description    | Release Date
+---         | ---     | ---            | ---
+[latest][6] | 1.0     | Latest release | 2023-10-17
 </div>
 <p align="center"><a href="#environment-variables">Environment variables</a> &bull; <a href="#usage">Usage</a> &bull; <a href="#using-compose">Using Compose</a> &bull; <a href="#manual-build">Manual build</a> <!-- &bull; <a href="#see-also">See also</a> --> &bull; <a href="#license">License</a></p>
 
@@ -37,7 +37,7 @@ RPCN_ENABLESTATSERVER   | false          | Enables a minimal web server to displ
 RPCN_STATSERVERHOST     | 0.0.0.0        | Web stat server host.
 RPCN_STATSERVERPORT     | 31314          | Web stat server port.
 
-> <sup>1</sup> The server requires the following extra port to be opened: 3657 (UDP).<br>
+> <sup>1</sup> The server requires the following extra port to be opened: __3657__ (UDP).<br>
 
 </details>
 
