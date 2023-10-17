@@ -70,6 +70,8 @@ git clone https://github.com/K4rian/docker-rpcn.git .
 ```bash
 docker build --no-cache -t k4rian/rpcn .
 ```
+> The building process can take up to 5 minutes depending on your hardware specs. <br>
+> A quad-core CPU with at least 1 GB of RAM and 2 GB of disk space is recommended for the compilation.
 
 <!---
 ## See also
