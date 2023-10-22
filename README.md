@@ -3,7 +3,7 @@
 </p>
 
 A Docker image for the [RPCN][1] P2P match-making server based on the official [Alpine Linux][2] [image][3].<br>
-The server allows you to play [many PS3 games][4] with P2P match-making support via netplay using the [RPS3][5] emulator.
+The server allows you to play [many PS3 games][4] with P2P match-making support via netplay using the [RPCS3][5] emulator.
 
 ---
 <div align="center">
