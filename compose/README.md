@@ -22,8 +22,8 @@ services:
     env_file:
       - rpcn.env
     ports:
-      - 33131 # TCP
-      - 3657  # UDP
+      - 33131:33131/tcp
+      - 3657:3657/udp
     restart: unless-stopped
 
 volumes:
