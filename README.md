@@ -8,9 +8,9 @@ The server allows you to play [many PS3 games][4] with P2P match-making support 
 ---
 <div align="center">
 
-Docker Tag  | Version | Description    | Release Date
----         | ---     | ---            | ---
-[latest][6] | 1.0     | Latest release | 2023-10-17
+Docker Tag  | Version | Description                 | Platform
+---         | ---     | ---                         | ---
+[latest][6] | 1.0     | Latest release (RPCN 1.2.1) | amd64, arm64
 </div>
 <p align="center"><a href="#environment-variables">Environment variables</a> &bull; <a href="#usage">Usage</a> &bull; <a href="#using-compose">Using Compose</a> &bull; <a href="#manual-build">Manual build</a> <!-- &bull; <a href="#see-also">See also</a> --> &bull; <a href="#license">License</a></p>
 
@@ -46,8 +46,8 @@ Run a public server using default configuration:
 ```bash
 docker run -d \
   --name rpcn \
-  -p 3657:3657 \
-  -p 31313:31313 \
+  -p 31313:31313/tcp \
+  -p 3657:3657/udp \
   -i k4rian/rpcn:latest
 ```
 
@@ -70,7 +70,7 @@ git clone https://github.com/K4rian/docker-rpcn.git .
 ```bash
 docker build --no-cache -t k4rian/rpcn .
 ```
-> The building process can take up to 5 minutes depending on your hardware specs. <br>
+> The building process can take up to 10 minutes depending on your hardware specs. <br>
 > A quad-core CPU with at least 1 GB of RAM and 2 GB of disk space is recommended for the compilation.
 
 <!---
