@@ -10,7 +10,8 @@ The server allows you to play [many PS3 games][4] with P2P match-making support 
 
 Docker Tag  | Version | Description                 | Platform
 ---         | ---     | ---                         | ---
-[latest][6] | 1.0     | Latest release (RPCN 1.2.1) | amd64, arm64
+[latest][6] | 1.0     | Latest release (RPCN 1.2.2) | amd64, arm64
+1.2.1       | 1.0     | RPCN 1.2.1                  | amd64, arm64
 </div>
 <p align="center"><a href="#environment-variables">Environment variables</a> &bull; <a href="#usage">Usage</a> &bull; <a href="#using-compose">Using Compose</a> &bull; <a href="#manual-build">Manual build</a> <!-- &bull; <a href="#see-also">See also</a> --> &bull; <a href="#license">License</a></p>
 
