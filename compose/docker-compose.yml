@@ -2,6 +2,7 @@ services:
   rpcn:
     image: k4rian/rpcn:latest
     container_name: rpcn
+    hostname: rpcn
     volumes:
       - data:/home/rpcn
       - /etc/localtime:/etc/localtime:ro

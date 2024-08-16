@@ -16,6 +16,7 @@ services:
   rpcn:
     image: k4rian/rpcn:latest
     container_name: rpcn
+    hostname: rpcn
     volumes:
       - data:/home/rpcn
       - /etc/localtime:/etc/localtime:ro
@@ -30,7 +31,7 @@ volumes:
   data:
 ```
 
-> The environment file *[rpcn.env](rpcn.env)* holds the server environment variables.
+* The environment file *[rpcn.env](rpcn.env)* holds the server environment variables.
 
 ## Deployment
 ```bash
