@@ -10,20 +10,23 @@ The server allows you to play [many PS3 games][4] with P2P match-making support 
 
 Docker Tag  | Version | Platform     | Description
 ---         | ---     | ---          | ---
-[latest][6] | 1.0     | amd64, arm64 | Latest release
-1.2.4       | 1.0     | amd64, arm64 | RPCN 1.2.4
+[latest][6] | 1.1     | amd64, arm64 | Latest release (RPCN 1.2.4x)
+[1.2.4x][6] | 1.1     | amd64, arm64 | RPCN 1.2.4x (2024-08)
 
 <details>
 <summary>Show more</summary>
 
 Docker Tag  | Version | Platform     | Description
 ---         | ---     | ---          | ---
-1.2.3       | 1.0     | amd64, arm64 | RPCN 1.2.3
-1.2.2       | 1.0     | amd64, arm64 | RPCN 1.2.2
-1.2.1       | 1.0     | amd64, arm64 | RPCN 1.2.1
+[1.2.4][9]  | 1.0     | amd64, arm64 | RPCN 1.2.4
+[1.2.3][9]  | 1.0     | amd64, arm64 | RPCN 1.2.3
+[1.2.2][9]  | 1.0     | amd64, arm64 | RPCN 1.2.2
+[1.2.1][9]  | 1.0     | amd64, arm64 | RPCN 1.2.1
 
 </details>
 </div>
+
+---
 <p align="center"><a href="#environment-variables">Environment variables</a> &bull; <a href="#usage">Usage</a> &bull; <a href="#using-compose">Using Compose</a> &bull; <a href="#manual-build">Manual build</a> <!-- &bull; <a href="#see-also">See also</a> --> &bull; <a href="#license">License</a></p>
 
 ---
@@ -40,7 +43,7 @@ RPCN_PORT               | 31313          | Port<sup>1</sup> to listen on (TCP).
 RPCN_CREATEMISSING      | true           | Create missing PSN servers IDs internally.
 RPCN_LOGVERBOSITY       | Info           | Determines the verbosity of the logging. Valid values are: Trace, Debug, Info, Warn, Error.
 RPCN_EMAILVALIDATION    | false          | This determines if emails are validated (if an email is sent to verify it and if a token is required).
-RPCN_EMAILHOST          |                | If empty, the server will bind on localhost:25 and credentials settings are ignored. Not started if email validation is set to false.
+RPCN_EMAILHOST          |                | If empty, the server will bind on `localhost:25` and credentials settings are ignored. Not started if email validation is set to `false`.
 RPCN_EMAILLOGIN         |                | Email server login.
 RPCN_EMAILPASSWORD      |                | Email server password.
 RPCN_SIGNTICKETS        | false          | Determines if tickets are signed.
@@ -60,7 +63,7 @@ docker run -d \
   --name rpcn \
   -p 31313:31313/tcp \
   -p 3657:3657/udp \
-  -i k4rian/rpcn:latest
+  -i k4rian/rpcn
 ```
 
 ## Using Compose
@@ -92,7 +95,7 @@ docker build --no-cache -t k4rian/rpcn .
 --->
 
 ## License
-[MIT][8]
+[AGPL-3.0][8]
 
 [1]: https://github.com/RipleyTom/rpcn "RPCN Repository"
 [2]: https://www.alpinelinux.org/ "Alpine Linux Official Website"
@@ -102,3 +105,4 @@ docker build --no-cache -t k4rian/rpcn .
 [6]: https://github.com/K4rian/docker-rpcn/blob/master/Dockerfile "Latest Dockerfile"
 [7]: https://github.com/K4rian/docker-rpcn/tree/master/compose "Compose Files"
 [8]: https://github.com/K4rian/docker-rpcn/blob/master/LICENSE
+[9]: https://github.com/K4rian/docker-rpcn/blob/f4b33ea25ba3eba0a1c67ab3ef6c69596d9dc6d8/Dockerfile "Dockerfile v1.0"

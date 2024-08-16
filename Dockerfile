@@ -1,20 +1,18 @@
-# Build the server binary
-FROM alpine:latest as builder
+FROM rust:alpine3.20 AS builder
 
 RUN apk update \
     && apk -U add --no-cache \
-        git \
-        rust \
-        cargo \
-        openssl \
-        openssl-dev \
+        build-base=0.5-r3 \
+        git=2.45.2-r0 \
+        openssl=3.3.1-r3 \
+        openssl-dev=3.3.1-r3 \
     && mkdir -p /server/lib /tmp/rpcn \
     && cd /tmp/rpcn \
     && git clone "https://github.com/RipleyTom/rpcn.git" /tmp/rpcn/ \
-    && OPENSSL_NO_VENDOR=1 cargo build --release --jobs 4 \
+    && OPENSSL_NO_VENDOR=1 RUSTFLAGS="-Ctarget-feature=-crt-static" cargo build --release --jobs 4 \
     && cp /tmp/rpcn/target/release/rpcn /server/rpcn \
     && cp /tmp/rpcn/*.cfg /server/ \
-    && mv /server/rpcn.cfg /server/rpcn.cfg.default \
+    && cp /server/rpcn.cfg /server/rpcn.cfg.default \
     && chmod +x /server/rpcn \
     && cp /usr/lib/libgcc_s.so.1 /server/lib/libgcc_s.so.1 \
     && cd /server \
@@ -23,32 +21,33 @@ RUN apk update \
     && openssl ec -in ticket_private.pem -pubout -out ticket_public.pem \
     && rm -R /tmp/rpcn
 
-# Set-up the server
-FROM alpine:latest
+FROM alpine:3.20
 
-ENV USERNAME rpcn
-ENV USERHOME /home/$USERNAME
+ENV USERNAME=rpcn
+ENV USERHOME=/home/$USERNAME
 
-ENV RPCN_HOST "0.0.0.0"
-ENV RPCN_PORT 31313
-ENV RPCN_CREATEMISSING "true"
-ENV RPCN_LOGVERBOSITY "Info"
-ENV RPCN_EMAILVALIDATION "false"
-ENV RPCN_EMAILHOST ""
-ENV RPCN_EMAILLOGIN ""
-ENV RPCN_EMAILPASSWORD ""
-ENV RPCN_SIGNTICKETS "false"
-ENV RPCN_SIGNTICKETSDIGEST "SHA224"
-ENV RPCN_ENABLESTATSERVER "false"
-ENV RPCN_STATSERVERHOST "0.0.0.0"
-ENV RPCN_STATSERVERPORT 31314
+ENV RPCN_HOST="0.0.0.0"
+ENV RPCN_PORT=31313
+ENV RPCN_CREATEMISSING="true"
+ENV RPCN_LOGVERBOSITY="Info"
+ENV RPCN_EMAILVALIDATION="false"
+ENV RPCN_EMAILHOST=""
+ENV RPCN_EMAILLOGIN=""
+ENV RPCN_EMAILPASSWORD=""
+ENV RPCN_SIGNTICKETS="false"
+ENV RPCN_SIGNTICKETSDIGEST="SHA224"
+ENV RPCN_ENABLESTATSERVER="false"
+ENV RPCN_STATSERVERHOST="0.0.0.0"
+ENV RPCN_STATSERVERPORT=31314
 
 RUN apk update \
+    && apk -U add --no-cache \
+        bash=5.2.26-r0 \
     && adduser --disabled-password $USERNAME \
     && rm -rf /tmp/* /var/tmp/*
 
-COPY --from=builder --chown=$USERNAME /server/ $USERHOME/
-COPY --chown=$USERNAME ./container_files/ $USERHOME/
+COPY --from=builder --chown=$USERNAME /server $USERHOME/
+COPY --chown=$USERNAME ./container_files $USERHOME/
 
 USER $USERNAME
 WORKDIR $USERHOME
