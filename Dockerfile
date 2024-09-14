@@ -4,10 +4,10 @@ WORKDIR /tmp/rpcn
 
 RUN apk update \
     && apk -U add --no-cache \
-        build-base=0.5-r3 \
-        git=2.45.2-r0 \
-        openssl=3.3.1-r3 \
-        openssl-dev=3.3.1-r3 \
+        build-base \
+        git \
+        openssl \
+        openssl-dev \
     && mkdir -p /server/lib \
     && git clone "https://github.com/RipleyTom/rpcn.git" /tmp/rpcn/ \
     && OPENSSL_NO_VENDOR=1 RUSTFLAGS="-Ctarget-feature=-crt-static" cargo build --release --jobs 4 \
@@ -43,7 +43,7 @@ ENV RPCN_STATSERVERPORT=31314
 
 RUN apk update \
     && apk -U add --no-cache \
-        bash=5.2.26-r0 \
+        bash \
     && adduser --disabled-password $USERNAME \
     && rm -rf /tmp/* /var/tmp/*
 
