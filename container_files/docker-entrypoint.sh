@@ -68,6 +68,7 @@ update_config_file() {
     ["StatServer"]="${RPCN_ENABLESTATSERVER}" \
     ["StatServerHost"]="${RPCN_STATSERVERHOST}" \
     ["StatServerPort"]=${RPCN_STATSERVERPORT} \
+    ["AdminsList"]="${RPCN_ADMINLIST}" \
   )
 
   for key in "${!e_data[@]}"; do
@@ -111,6 +112,10 @@ print_header() {
   if [ $server_ess = "Yes" ]; then
     printf "$pf" "Stat Server Host:" "${RPCN_STATSERVERHOST}"
     printf "$pf" "Stat Server Port:" "${RPCN_STATSERVERPORT}"
+  fi
+  if [[ -n "$RPCN_ADMINLIST" ]]; then
+    local server_al="${RPCN_ADMINLIST//,/\, }"
+    printf "$pf" "Admin List:" "${server_al}"
   fi
   printf "\n"
 }

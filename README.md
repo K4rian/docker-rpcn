@@ -10,18 +10,19 @@ The server allows you to play [many PS3 games][4] with P2P match-making support 
 
 Docker Tag  | Version | Platform     | Description
 ---         | ---     | ---          | ---
-[latest][6] | 1.2     | amd64, arm64 | Latest release (RPCN 1.2.4x \| 2024-09)
-[1.2.4x][6] | 1.2     | amd64, arm64 | RPCN 1.2.4x (2024-09)
+[latest][6] | 1.3     | amd64, arm64 | Latest release (RPCN 1.3.0)
+[1.3.0][6]  | 1.3     | amd64, arm64 | RPCN 1.3.0
 
 <details>
 <summary>Show more</summary>
 
-Docker Tag  | Version | Platform     | Description
----         | ---     | ---          | ---
-[1.2.4][9]  | 1.0     | amd64, arm64 | RPCN 1.2.4
-[1.2.3][9]  | 1.0     | amd64, arm64 | RPCN 1.2.3
-[1.2.2][9]  | 1.0     | amd64, arm64 | RPCN 1.2.2
-[1.2.1][9]  | 1.0     | amd64, arm64 | RPCN 1.2.1
+Docker Tag   | Version | Platform     | Description
+---          | ---     | ---          | ---
+[1.2.4x][10] | 1.2     | amd64, arm64 | RPCN 1.2.4x (2024-09)
+[1.2.4][9]   | 1.0     | amd64, arm64 | RPCN 1.2.4
+[1.2.3][9]   | 1.0     | amd64, arm64 | RPCN 1.2.3
+[1.2.2][9]   | 1.0     | amd64, arm64 | RPCN 1.2.2
+[1.2.1][9]   | 1.0     | amd64, arm64 | RPCN 1.2.1
 
 </details>
 </div>
@@ -51,6 +52,7 @@ RPCN_SIGNTICKETSDIGEST  | SHA224         | OpenSSL message digest algorithm used
 RPCN_ENABLESTATSERVER   | false          | Enables a minimal web server to display stats.
 RPCN_STATSERVERHOST     | 0.0.0.0        | Web stat server host.
 RPCN_STATSERVERPORT     | 31314          | Web stat server port.
+RPCN_ADMINLIST          |                | List of admin usernames, separated by a comma (without space). Ensure that admin accounts are created before making the server public.
 
 > <sup>1</sup> The server requires the following extra port to be opened: __3657__ (UDP).<br>
 
@@ -106,3 +108,4 @@ docker build --no-cache -t k4rian/rpcn .
 [7]: https://github.com/K4rian/docker-rpcn/tree/master/compose "Compose Files"
 [8]: https://github.com/K4rian/docker-rpcn/blob/master/LICENSE
 [9]: https://github.com/K4rian/docker-rpcn/blob/f4b33ea25ba3eba0a1c67ab3ef6c69596d9dc6d8/Dockerfile "Dockerfile v1.0"
+[10]: https://github.com/K4rian/docker-rpcn/blob/e499e32380a44a6bfc4c529e139bbc90c5236d21/Dockerfile "Dockerfile v1.2"
