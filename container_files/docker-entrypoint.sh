@@ -59,6 +59,7 @@ update_config_file() {
     ["Verbosity"]="${RPCN_LOGVERBOSITY}" \
     ["Host"]="${RPCN_HOST}" \
     ["Port"]=${RPCN_PORT} \
+    ["HostIPv6"]="${RPCN_HOSTV6}" \
     ["EmailValidated"]="${RPCN_EMAILVALIDATION}" \
     ["EmailHost"]="${RPCN_EMAILHOST}" \
     ["EmailLogin"]="${RPCN_EMAILLOGIN}" \
@@ -68,6 +69,7 @@ update_config_file() {
     ["StatServer"]="${RPCN_ENABLESTATSERVER}" \
     ["StatServerHost"]="${RPCN_STATSERVERHOST}" \
     ["StatServerPort"]=${RPCN_STATSERVERPORT} \
+    ["StatServerCacheLife"]=${RPCN_STATSERVERCACHELIFE} \
     ["AdminsList"]="${RPCN_ADMINLIST}" \
   )
 
@@ -82,7 +84,7 @@ update_config_file() {
 }
 
 print_header() {
-  local pf="● %-22s %-25s\n"
+  local pf="● %-21s %-25s\n"
 
   [ "${RPCN_CREATEMISSING,,}" = "true" ] && server_cm="Yes" || server_cm="No"
   [ "${RPCN_EMAILVALIDATION,,}" = "true" ] && server_ev="Yes" || server_ev="No"
@@ -96,6 +98,7 @@ print_header() {
   printf "\n"
   printf "$pf" "Host:" "${RPCN_HOST}"
   printf "$pf" "Port:" "${RPCN_PORT}"
+  printf "$pf" "Host (IPv6):" "${RPCN_HOSTV6}"
   printf "$pf" "Create Missing Serv.:" "${server_cm}"
   printf "$pf" "Log Verbosity:" "${RPCN_LOGVERBOSITY}"
   printf "$pf" "Email Validation:" "${server_ev}"
@@ -106,12 +109,13 @@ print_header() {
   fi
   printf "$pf" "Signed Tickets:" "${server_st}"
   if [ $server_st = "Yes" ]; then
-    printf "$pf" "Signed Tickets Digest:" "${RPCN_SIGNTICKETSDIGEST}"
+    printf "$pf" "Tickets Digest:" "${RPCN_SIGNTICKETSDIGEST}"
   fi
   printf "$pf" "Stat Server Enabled:" "${server_ess}"
   if [ $server_ess = "Yes" ]; then
-    printf "$pf" "Stat Server Host:" "${RPCN_STATSERVERHOST}"
-    printf "$pf" "Stat Server Port:" "${RPCN_STATSERVERPORT}"
+    printf "$pf" "S. Server Host:" "${RPCN_STATSERVERHOST}"
+    printf "$pf" "S. Server Port:" "${RPCN_STATSERVERPORT}"
+    printf "$pf" "S. Server Cache Life:" "${RPCN_STATSERVERCACHELIFE}"
   fi
   if [[ -n "$RPCN_ADMINLIST" ]]; then
     local server_al="${RPCN_ADMINLIST//,/\, }"
