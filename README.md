@@ -10,14 +10,15 @@ The server allows you to play [many PS3 games][4] with P2P match-making support 
 
 Docker Tag  | Version | Platform     | Description
 ---         | ---     | ---          | ---
-[latest][6] | 1.4     | amd64, arm64 | Latest release (RPCN 1.4.0)
-[1.4.0][6]  | 1.4     | amd64, arm64 | RPCN 1.4.0
+[latest][6] | 1.4     | amd64, arm64 | Latest release (RPCN 1.4.1)
+[1.4.1][6]  | 1.4     | amd64, arm64 | RPCN 1.4.1
 
 <details>
 <summary>Show more</summary>
 
 Docker Tag   | Version | Platform     | Description
 ---          | ---     | ---          | ---
+[1.4.0][6]   | 1.4     | amd64, arm64 | RPCN 1.4.0
 [1.3.0x][11] | 1.3     | amd64, arm64 | RPCN 1.3.0x (2025-02)
 [1.3.0][11]  | 1.3     | amd64, arm64 | RPCN 1.3.0
 [1.2.4x][10] | 1.2     | amd64, arm64 | RPCN 1.2.4x (2024-09)
